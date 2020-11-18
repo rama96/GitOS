@@ -12,7 +12,7 @@ def ConfigReader():
 
 
 class GitObject:
-    def __init__(self, PATH_TO_CONFIG=None, REPO=None, LocalPath=None):
+    def __init__(self, PATH_TO_CONFIG=None, REPO=None, LocalPath="./"):
         print("Starting GitObject Initialized")
         self.Repository = REPO
         self.local = LocalPath
@@ -38,14 +38,12 @@ class GitObject:
 
         print("\nYou will be asked for the user first and then the repository name\n")
 
-        user = input("User: ")
+        user = self.user
         __user__ = f"{user}"
-        repo = input("Repository: ")
+        repo = self.REPO
         __repo__ = f"{repo}"
 
-        print("\nChoose the local path for your clone.")
-        local = input("Local path: ")
-        local_path = f"{local}"
+        local_path = f"{self.local}"
 
         subprocess.Popen(
             [
