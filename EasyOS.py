@@ -45,14 +45,14 @@ class GitObject:
 
         user = self.user
         __user__ = f"{user}"
-        repo = self.REPO
+        repo = self.Repository
         __repo__ = f"{repo}"
         token = self.token
         __token__ = f"{token}"
 
         dest_path = f"{self.dest}"
 
-        subprocess.Popen(
+        subprocess.run(
             [
                 "git",
                 "clone",

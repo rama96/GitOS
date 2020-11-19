@@ -16,12 +16,18 @@ from EasyOS import GitObject
 # -- 
 
 def main():
-    git_1 = GitObject("config.ini", "GitUtils" ,"temp1") ## Creating an object  
+    print("\n STEP 1 : \n")
+    git_1 = GitObject("config.ini", "GoogleColabTesting" ,"temp1") ## Creating an object  
+    print("\n STEP 2 : \n")
     git_1.list_all_dir() ## List of things present in the current dir  
+    print("\n STEP 3 : \n")
     git_1.mk_dir("temp1") ## Making a new dir given path
-    git_1.mk_dir("temp2")
-    git_1.mk_dir("temp2")
-    
+    print("\n STEP 4 : \n")
+    git_1.mk_dir("temp2") ## Making a new temp dir to transfer the contents of the temp1
+    print("\n STEP 5 : \n")
+    git_1.clone_to_path() ## Cloning directory to destination variable
+    print("\n STEP 6 : \n")
+    git_1.del_loc("temp1") ## Del temp1
     
     
     #git_1.clone_to_path()
@@ -37,3 +43,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
