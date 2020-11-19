@@ -37,6 +37,47 @@ class GitObject:
     def abs_path(self , path):
         return join(self.parent_dir , path )
 
+    def list_all_dir(self):
+        """ See the list of all dir tree"""
+        curr_wk_dir = f"{str(os.getcwd())}"
+        print(
+            "listing all files and directories under working directory :", curr_wk_dir
+        ," -- ")
+        print(os.listdir())
+
+    def mk_dir(self,dir_name):
+        """ See the list of all dir tree"""
+        curr_wk_dir = f"{str(os.getcwd())}"
+        dir_path = join(curr_wk_dir,dir_name)
+        print(
+            "Creating a new directory in the following path :", dir_path
+        ," -- ")
+        
+        try: 
+            os.mkdir(dir_path) 
+        except OSError as error: 
+            print(error," , Moving on with the process")   
+
+    def cd_to_loc(self, loc):
+        """ Switch your Working Directory """
+        loc = f"{loc}"
+        #print("Seting Working dir as :", loc)
+        #print(["cd", loc])
+        
+        chg_dir = join(self.parent_dir , loc)
+        print("Parent Dir : ",self.parent_dir)
+        print("dir to be changed to :", chg_dir )
+        os.chdir(chg_dir)
+        self.curr_dir = f"{str(os.getcwd())}"
+        
+    def del_loc(self, loc):
+        """ See the list of all dir tree"""
+        __loc__ = f"{loc}"
+        rm_dir = join(self.parent_dir , __loc__)
+        print("Removing directory :: ",rm_dir)
+        shutil.rmtree(rm_dir)
+        #self.dest = None
+
     def clone_to_path(self):
         """ Function to clone the repository to a particular local path :: """
 
@@ -139,47 +180,7 @@ class GitObject:
         )
         subprocess.run(["rsync", "-aP", __exclude_list__, __source__, __dest__])
 
-    def list_all_dir(self):
-        """ See the list of all dir tree"""
-        curr_wk_dir = f"{str(os.getcwd())}"
-        print(
-            "listing all files and directories under working directory :", curr_wk_dir
-        ," -- ")
-        print(os.listdir())
-
-    def mk_dir(self,dir_name):
-        """ See the list of all dir tree"""
-        curr_wk_dir = f"{str(os.getcwd())}"
-        dir_path = join(curr_wk_dir,dir_name)
-        print(
-            "Creating a new directory in the following path :", dir_path
-        ," -- ")
-        
-        try: 
-            os.mkdir(dir_path) 
-        except OSError as error: 
-            print(error," , Moving on with the process")   
-
-    def cd_to_loc(self, loc):
-        """ Switch your Working Directory """
-        loc = f"{loc}"
-        #print("Seting Working dir as :", loc)
-        #print(["cd", loc])
-        
-        chg_dir = join(self.parent_dir , loc)
-        print("Parent Dir : ",self.parent_dir)
-        print("dir to be changed to :", chg_dir )
-        os.chdir(chg_dir)
-        self.curr_dir = f"{str(os.getcwd())}"
-        
-    def del_loc(self, loc):
-        """ See the list of all dir tree"""
-        __loc__ = f"{loc}"
-        rm_dir = join(self.parent_dir , __loc__)
-        print("Removing directory :: ",rm_dir)
-        shutil.rmtree(rm_dir)
-        #self.dest = None
-
+    
 
 
 # Commands used in jupyter -- 
