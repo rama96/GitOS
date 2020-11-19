@@ -4,13 +4,6 @@ import subprocess
 from configparser import ConfigParser
 
 
-def ConfigReader():
-    file = "/content/drive/My Drive/Projects/Config/config.ini"
-    config = ConfigParser()
-    config.read(file)
-    return config
-
-
 class GitObject:
     def __init__(self, PATH_TO_CONFIG=None, REPO=None, LocalPath="./"):
         print("Starting GitObject Initialized")
