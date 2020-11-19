@@ -7,15 +7,15 @@ from os.path import join
 import shutil
 
 class GitObject:
-    def __init__(self, PATH_TO_CONFIG=None, REPO=None, dest=None):
+    def __init__(self, PATH_TO_CONFIG=None, REPO=None, dest=""):
         print("Starting GitObject Initialized")
+        self.parent_dir = str(os.getcwd())
         self.Repository = REPO
-        self.dest = dest
+        self.dest = self.abs_path(dest)
         config = ConfigParser()
         config.read(PATH_TO_CONFIG)
         self.user = config["GitHub"]["USERNAME"]
         self.token = config["GitHub"]["TOKEN"]
-        self.parent_dir = str(os.getcwd())
         self.curr_dir = self.parent_dir
         print("GitObject Initialized Completed")
         self.printing_values()
@@ -33,6 +33,9 @@ class GitObject:
 
     def run(*args):
         return subprocess.check_call(["git"] + list(args))
+    
+    def abs_path(self , path):
+        return join(self.parent_dir , path )
 
     def clone_to_path(self):
         """ Function to clone the repository to a particular local path :: """

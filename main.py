@@ -1,10 +1,3 @@
-from github import Github
-from os.path import join  # import join used to join ROOT path and MY_GOOGLE_DRIVE_PATH
-import subprocess
-from configparser import ConfigParser
-import os
-from os.path import join
-import shutil
 from EasyOS import GitObject 
 
 
@@ -23,10 +16,15 @@ from EasyOS import GitObject
 # -- 
 
 def main():
-    git_1 = GitObject("config.ini", "GitUtils")
-    git_1.list_all_dir()
-    git_1.mk_dir("temp/temp1")
-    git_1.del_loc("temp/temp1")
+    git_1 = GitObject("config.ini", "GitUtils" ,"temp1") ## Creating an object  
+    git_1.list_all_dir() ## List of things present in the current dir  
+    git_1.mk_dir("temp1") ## Making a new dir given path
+    git_1.mk_dir("temp2")
+    git_1.mk_dir("temp2")
+    
+    
+    
+    #git_1.clone_to_path()
     #git_1.list_all_dir()
     #git_1.printing_values()
     #source = "/Users/ramamurthi/Pet_Projects/GitUtils/temp/*"
