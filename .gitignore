@@ -1,3 +1,4 @@
 # Ignoring Config File 
 config.ini
 /temp
+__pycache__
