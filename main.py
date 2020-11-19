@@ -27,8 +27,8 @@ def main():
     print("\n STEP 5 : \n")
     git_1.clone_to_path() ## Cloning directory to destination variable
     print("\n STEP 6 : \n")
-    git_1.del_loc("temp1") ## Del temp1
-    git_1.del_loc("temp2") ## Del temp1
+    #git_1.del_loc("temp1") ## Del temp1
+    git_1.mv_to_loc("temp1/","temp2")
     
     #git_1.clone_to_path()
     #git_1.list_all_dir()

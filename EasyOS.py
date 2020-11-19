@@ -22,7 +22,6 @@ class GitObject:
 
     def printing_values(self):
         print("*" + ("-" * 100) + "*")
-        
         print("Repository Accessd : ", self.Repository)
         print("User Accessd : ", self.user)
         print("Token Accessd : ", self.token)
@@ -150,12 +149,31 @@ class GitObject:
 
     def mv_to_loc(self, source , dest ):
         """ Copy the contents of cloned dir to wk """
-        dest = f"{dest}"
+        dest = f"{self.abs_path(dest)}"
 
-        source = f"{source}"
+        source = f"{self.abs_path(source)}"
+        os.chdir(source)
+        files = os.listdir()
+        
         print("Moving the contents of cloned dir to wk")
-        subprocess.run(["mv", source, dest],shell=True)
-
+        for file in files:
+            __source__ = join(source,file)
+            __dest__ = join(dest,file)
+            print("Moving file :",file)
+            try: 
+                shutil.copy(__source__, __dest__,follow_symlinks = False)
+                print("File copied successfully.") 
+  
+            # If source and destination are same 
+            except shutil.SameFileError: 
+                print("Source and destination represents the same file.") 
+            except PermissionError: 
+                print("Permission denied.") 
+  
+            # For other errors 
+            except: 
+                print("Error occurred while copying file.")
+            #print("Moved to :" , result ,"\n")
 
     def sync_to_wk(
         self,
