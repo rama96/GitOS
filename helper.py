@@ -30,7 +30,8 @@ class GitObject:
     def clone_to_path(self):
         """ Function to clone the repository to a particular local path :: """
 
-        print("\nYou will be asked for the user first and then the repository name\n")
+        dest_path = f"{self.dest}"
+        print("\nCloning git to path : ",dest_path)
 
         user = self.user
         __user__ = f"{user}"
@@ -112,6 +113,7 @@ class GitObject:
     
     def list_all_dir(self):
         """ See the list of all dir tree"""
+        print("listing all files and directories under working directory :")
         subprocess.Popen(["ls"])
     
     def cd_to_loc(self,loc):
@@ -148,7 +150,8 @@ PROJECT_PATH_NEW = join(PROJECT_PATH,GIT_REPOSITORY)
 def main():
     git_1 = GitObject("config.ini", "GitUtils")
     git_1.list_all_dir()
-    git_1.sync_to_wk("source_path","dest_path")
+    git_1.list_all_dir()
+    #git_1.sync_to_wk("source_path","dest_path")
     # git_1.printing_values()
 
 
