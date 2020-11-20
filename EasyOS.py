@@ -32,7 +32,7 @@ class GitObject:
         print("*" + ("-" * 100) + "*")
 
     def run(*args):
-        return subprocess.check_call(["git"] + list(args))
+        return subprocess.call(["git"] + list(args))
 
     def abs_path(self, path):
         return join(self.parent_dir, path)
@@ -113,27 +113,31 @@ class GitObject:
         """ Function to stage and commit changes to an particular repo after making changes """
 
         # message = input("\nType in your commit message: ")
+        os.chdir(self.dest)
         commit_message = f"{message}"
 
-        run("add", ".")
-        run("commit", "-m", commit_message)
+        subprocess.run(["git","add", "."])
+        subprocess.run(["git","commit", "-m",commit_message])
         print("Commited all the changes successfully")
+        os.chdir(self.parent_dir)
         # run("push", "-u", "origin", "master")
 
     def push(self, branch_name):
         """ Function to stage and commit changes to an particular repo after making changes """
+        os.chdir(self.dest)
         br = f"{branch_name}"
 
         # message = input("\nType in your commit message: ")
-        commit_message = f"{message}"
-        run("push", "origin", br)
+        #commit_message = f"{message}"
+        subprocess.run(["git","push", "origin",br])
+        os.chdir(self.parent_dir)
 
     def create_new_branch(self, branch):
         """Create a new branch  """
 
         br = f"{branch}"
 
-        run("checkout", "-b", br)
+        self.run("checkout", "-b", br)
         print("Created Branch ", br, "successfully")
 
     def switch_branch(self, branch):
@@ -141,7 +145,7 @@ class GitObject:
 
         br = f"{branch}"
 
-        run("checkout", br)
+        self.run("checkout", br)
         print("Switched Branch to", br, "successfully")
 
     def git_to_local(self):
@@ -175,6 +179,7 @@ class GitObject:
             except:
                 print("Error occurred while copying file.")
             # print("Moved to :" , result ,"\n")
+            os.chdir(self.parent_dir)
 
     def sync_to_wk(
         self,
@@ -197,7 +202,7 @@ class GitObject:
             "excluding ",
             exclude_list,
         )
-        subprocess.run(["rsync", "-aP", __exclude_list__, __source__, __dest__])
+        subprocess.run(["rsync", "-aPz", __exclude_list__, __source__, __dest__])
 
 
 # Commands used in jupyter --

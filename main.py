@@ -1,5 +1,5 @@
 from EasyOS import GitObject 
-
+import os
 
 # Commands used in jupyter -- 
 """
@@ -16,20 +16,54 @@ from EasyOS import GitObject
 # -- 
 
 def main():
-    print("\n STEP 1 : \n")
+    print("\n STEP 1 : Creating the Object \n")
     git_1 = GitObject("config.ini", "GoogleColabTesting" ,"temp1") ## Creating an object  
-    print("\n STEP 2 : \n")
-    git_1.list_all_dir() ## List of things present in the current dir  
-    print("\n STEP 3 : \n")
-    git_1.mk_dir("temp1") ## Making a new dir given path
-    print("\n STEP 4 : \n")
-    git_1.mk_dir("temp2") ## Making a new temp dir to transfer the contents of the temp1
-    print("\n STEP 5 : \n")
-    git_1.clone_to_path() ## Cloning directory to destination variable
-    print("\n STEP 6 : \n")
-    #git_1.del_loc("temp1") ## Del temp1
-    git_1.mv_to_loc("temp1/","temp2") ##
+    print(os.getcwd())
     
+    print("\n STEP 2 : List of things present in the current dir  \n")
+    git_1.list_all_dir() ## List of things present in the current dir  
+    print("\n STEP 3 : Making a new dir given path\n")
+    git_1.mk_dir("temp1") ## Making a new dir given path
+    print(os.getcwd())
+    
+    print("\n STEP 4 : Making a new temp dir to transfer the contents of the temp1\n")
+    git_1.mk_dir("temp2") ## Making a new temp dir to transfer the contents of the temp1
+    print(os.getcwd())
+
+    print("\n STEP 5 : Cloning directory to destination variable\n")
+    git_1.clone_to_path() ## Cloning directory to destination variable
+    print(os.getcwd())
+
+    print("\n STEP 6 : Moving the contents of temp1 to temp 2 \n")
+    #git_1.del_loc("temp1") ## Del temp1
+    
+    git_1.mv_to_loc("temp1/","temp2") ##
+    print(os.getcwd())
+
+    #git_1.sync_to_wk(
+    #    source="temp1/",
+    #    dest="temp2",
+    #    exclude_list={"data/", "sample/", "drive/", ".config/",".git/"},
+    #)
+    print("STEP 7 : Make some changes to temp2 and store them in temp 1")
+    print(os.getcwd())
+
+    f = open("temp2/demofile3.txt", "a")
+    f.write("Now the file has more content!")
+    f.close()
+    
+    print(os.getcwd())
+    print("\n STEP 8 : Rsync temp2 contents to temp 1 -- \n ")
+    git_1.sync_to_wk(
+        source="temp2/",
+        dest="temp1",
+        exclude_list={"data/", "sample/", "drive/", ".config/",".git/"},
+    )
+    git_1.commit("Inserting Demofile using EasyOS Class")
+    git_1.push("main")
+    # make changes in the cloned dir and push the changes 
+
+
     #git_1.clone_to_path()
     #git_1.list_all_dir()
     #git_1.printing_values()
