@@ -48,7 +48,7 @@ def main():
     print("STEP 7 : Make some changes to temp2 and store them in temp 1")
     print(os.getcwd())
 
-    f = open("temp2/demofile3.txt", "a")
+    f = open("temp2/demofile4.txt", "a")
     f.write("Now the file has more content!")
     f.close()
     
@@ -59,7 +59,7 @@ def main():
         dest="temp1",
         exclude_list={"data/", "sample/", "drive/", ".config/",".git/"},
     )
-    git_1.commit("Inserting Demofile using EasyOS Class")
+    git_1.commit("Inserting Demofile4 using EasyOS Class")
     git_1.push("main")
     # make changes in the cloned dir and push the changes 
 
