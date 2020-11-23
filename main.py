@@ -48,7 +48,7 @@ def main():
     print("STEP 7 : Make some changes to temp2 and store them in temp 1")
     print(os.getcwd())
 
-    f = open("temp2/demofile5.txt", "a")
+    f = open("temp2/Switch_branch_Test.txt", "a")
     f.write("Now the file has more content!")
     f.close()
     
@@ -59,10 +59,14 @@ def main():
         dest="temp1",
         exclude_list={"data/", "sample/", "drive/", ".config/",".git/"},
     )
-    git_1.commit("Inserting Demofile4 using EasyOS Class")
-    git_1.push("main")
+
+    print("\n STEP 9 : Crerating a new branch named test1 \n ")
+    #git_1.create_new_branch("test1")
+    git_1.switch_branch("test1")
+    git_1.commit("Switch Branch Test using EasyOS Class")
+    git_1.push("test1")
     
-    print("STEP 7 : Creating Branches in a directory ")
+    #print("STEP 7 : Creating Branches in a directory ")
         # make changes in the cloned dir and push the changes 
 
 

@@ -137,7 +137,7 @@ class GitObject:
         os.chdir(self.dest)
         br = f"{branch}"
 
-        self.run("checkout", "-b", br)
+        subprocess.run(["git" , "checkout", "-b", br])
         print("Created Branch ", br, "successfully")
         os.chdir(self.parent_dir)
 
@@ -146,10 +146,10 @@ class GitObject:
         os.chdir(self.dest)
         br = f"{branch}"
 
-        self.run("checkout", br)
+        subprocess.run(["git","checkout", br])
         print("Switched Branch to", br, "successfully")
         os.chdir(self.parent_dir)
-        
+
     def git_to_local(self):
         """Create a new branch and commit and push the changes into them """
         print("Function Under dev")
