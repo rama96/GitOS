@@ -134,19 +134,21 @@ class GitObject:
 
     def create_new_branch(self, branch):
         """Create a new branch  """
-
+        os.chdir(self.dest)
         br = f"{branch}"
 
-        self.run("checkout", "-b", br)
+        subprocess.run(["git" , "checkout", "-b", br])
         print("Created Branch ", br, "successfully")
+        os.chdir(self.parent_dir)
 
     def switch_branch(self, branch):
         """Switch between branches """
-
+        os.chdir(self.dest)
         br = f"{branch}"
 
-        self.run("checkout", br)
+        subprocess.run(["git","checkout", br])
         print("Switched Branch to", br, "successfully")
+        os.chdir(self.parent_dir)
 
     def git_to_local(self):
         """Create a new branch and commit and push the changes into them """
@@ -179,7 +181,7 @@ class GitObject:
             except:
                 print("Error occurred while copying file.")
             # print("Moved to :" , result ,"\n")
-            os.chdir(self.parent_dir)
+        os.chdir(self.parent_dir)    
 
     def sync_to_wk(
         self,
