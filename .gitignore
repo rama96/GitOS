@@ -3,3 +3,5 @@ config.ini
 /temp
 __pycache__
 temp[0-9]
+temp1
+temp2
