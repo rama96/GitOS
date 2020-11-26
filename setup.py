@@ -5,7 +5,7 @@ HERE = pathlib.Path(__file__).parent
 
 VERSION = '0.1.0'
 PACKAGE_NAME = 'GitUtils'
-AUTHOR = 'Rama'
+AUTHOR = 'Ramamurthi'
 AUTHOR_EMAIL = 'ramamurthi96@gmail.com'
 URL = 'https://github.com/rama96/GitUtils.git'
 
