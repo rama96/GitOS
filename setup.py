@@ -4,10 +4,10 @@ from setuptools import setup, find_packages
 HERE = pathlib.Path(__file__).parent
 
 VERSION = '0.1.0'
-PACKAGE_NAME = 'GitUtils'
+PACKAGE_NAME = 'GitOS'
 AUTHOR = 'Ramamurthi'
 AUTHOR_EMAIL = 'ramamurthi96@gmail.com'
-URL = 'https://github.com/rama96/GitUtils.git'
+URL = 'https://github.com/rama96/GitOS.git'
 
 LICENSE = 'Apache License 2.0'
 DESCRIPTION = 'Package for Using Git and Colab and Drive'
