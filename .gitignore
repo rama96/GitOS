@@ -5,3 +5,6 @@ __pycache__
 temp[0-9]
 temp1
 temp2
+/build
+/dist
+/GitOS.egg-info
