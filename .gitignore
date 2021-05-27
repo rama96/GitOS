@@ -9,3 +9,5 @@ temp2
 /dist
 /GitOS.egg-info
 /temp_folder
+.env
+env
